@@ -393,14 +393,14 @@
     legend_position: right
     x_axis_gridlines: false
     y_axis_gridlines: true
-    show_view_names: true
+    show_view_names: false
     limit_displayed_rows: false
     y_axis_combined: true
     show_y_axis_labels: true
     show_y_axis_ticks: true
     y_axis_tick_density: default
     y_axis_tick_density_custom: 5
-    show_x_axis_label: true
+    show_x_axis_label: false
     show_x_axis_ticks: true
     x_axis_scale: auto
     y_axis_scale_mode: linear
@@ -457,9 +457,11 @@
       margin_value: mean
       margin_bottom: deviation
       label_position: right
-      color: "#148f1b"
+      color: "#07480b"
       label: 'Average User Count: {{mean}}'
       value_format: "#"
+    series_labels:
+      user.count: User Count
     row: 0
     col: 0
     width: 12
@@ -506,7 +508,7 @@
       fields:
     row: 15
     col: 0
-    width: 12
+    width: 6
     height: 8
   - name: Development Activity
     title: Development Activity
@@ -627,7 +629,146 @@
     - pdt_log.count desc
     limit: 500
     query_timezone: America/Los_Angeles
-    row:
-    col:
-    width:
-    height:
+    show_view_names: false
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: gray
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    series_types: {}
+    conditional_formatting:
+    - type: low to high
+      value:
+      background_color:
+      font_color:
+      palette:
+        name: Red to Yellow to Green
+        colors:
+        - "#F36254"
+        - "#FCF758"
+        - "#4FBC89"
+      bold: false
+      italic: false
+      strikethrough: false
+      fields:
+    series_labels:
+      pdt_log.count: Build Complete Count
+    row: 15
+    col: 6
+    width: 6
+    height: 8
+  - name: Scheduled Plan Activity
+    title: Scheduled Plan Activity
+    model: looker_ext
+    explore: scheduled_plan
+    type: looker_column
+    fields:
+    - scheduled_plan_destination.format
+    - scheduled_job.count
+    - scheduled_job.created_week
+    pivots:
+    - scheduled_plan_destination.format
+    fill_fields:
+    - scheduled_job.created_week
+    filters:
+      scheduled_plan_destination.format: "-NULL"
+      scheduled_plan.run_once: 'no'
+    sorts:
+    - scheduled_plan_destination.format
+    - scheduled_job.created_week desc
+    limit: 500
+    query_timezone: America/Los_Angeles
+    stacking: normal
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: true
+    show_silhouette: false
+    totals_color: "#808080"
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_types: {}
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    column_group_spacing_ratio:
+    y_axes:
+    - label: Schedule Run Count
+      maxValue:
+      minValue:
+      orientation: left
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: html
+        name: html
+        axisId: scheduled_job.count
+      - id: inline_table
+        name: inline_table
+        axisId: scheduled_job.count
+      - id: json
+        name: json
+        axisId: scheduled_job.count
+      - id: txt
+        name: txt
+        axisId: scheduled_job.count
+      - id: wysiwyg_pdf
+        name: wysiwyg_pdf
+        axisId: scheduled_job.count
+      - id: xlsx
+        name: xlsx
+        axisId: scheduled_job.count
+    row: 23
+    col: 0
+    width: 12
+    height: 7
