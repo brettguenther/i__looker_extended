@@ -1,9 +1,9 @@
-- dashboard: customer_adoption_and_health_reporting
-  title: Customer Adoption and Health Reporting
+- dashboard: customer_adoption_and_health_reporting_new
+  title: Customer Adoption and Health Reporting New
   layout: newspaper
   elements:
-  - name: Source Activity
-    title: Source Activity
+  - title: Source Activity
+    name: Source Activity
     model: looker_ext
     explore: history_full
     type: looker_column
@@ -71,6 +71,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 71
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 59
     - label:
       maxValue:
       minValue:
@@ -86,6 +90,10 @@
       - id: history.query_run_count
         name: Query Run Count
         axisId: history.query_run_count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 86
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 74
     trend_lines: []
     reference_lines: []
     limit_displayed_rows_values:
@@ -105,16 +113,22 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 103
       bold: false
       italic: false
       strikethrough: false
       fields:
-    row: 0
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 98
+    listen:
+      History Lookback: history.created_date
+    row: 2
     col: 12
     width: 12
     height: 7
-  - name: Model Explore Adoption
-    title: Model Explore Adoption
+  - title: Model Explore Adoption
+    name: Model Explore Adoption
     model: looker_ext
     explore: history_full
     type: table
@@ -186,6 +200,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 186
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 174
     - label:
       maxValue:
       minValue:
@@ -201,6 +219,10 @@
       - id: history.query_run_count
         name: History Query Run Count
         axisId: history.query_run_count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 201
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 189
     trend_lines: []
     reference_lines:
     - reference_type: line
@@ -214,6 +236,8 @@
       color: "#148f1b"
       label: 'Average User Count: {{mean}}'
       value_format: "#"
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 206
     limit_displayed_rows_values:
       show_hide: hide
       first_last: first
@@ -231,16 +255,22 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 229
       bold: false
       italic: false
       strikethrough: false
       fields:
-    row: 7
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 224
+    listen:
+      History Lookback: history.created_date
+    row: 9
     col: 0
     width: 12
     height: 8
-  - name: Dialect and Connection Usage
-    title: Dialect and Connection Usage
+  - title: Dialect and Connection Usage
+    name: Dialect and Connection Usage
     model: looker_ext
     explore: history_full
     type: looker_column
@@ -312,6 +342,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 312
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 300
     - label: ''
       maxValue:
       minValue:
@@ -327,6 +361,10 @@
       - id: history.average_runtime
         name: Average Runtime
         axisId: history.average_runtime
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 327
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 315
     - label:
       maxValue:
       minValue:
@@ -342,6 +380,10 @@
       - id: history.query_run_count
         name: Query Run Count
         axisId: history.query_run_count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 342
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 330
     trend_lines: []
     reference_lines: []
     limit_displayed_rows_values:
@@ -361,16 +403,22 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 359
       bold: false
       italic: false
       strikethrough: false
       fields:
-    row: 7
-    col: 12
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 354
+    listen:
+      History Lookback: history.created_date
+    row: 31
+    col: 3
     width: 12
     height: 8
-  - name: User Activity
-    title: User Activity
+  - title: User Activity
+    name: User Activity
     model: looker_ext
     explore: history_full
     type: looker_line
@@ -432,6 +480,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 432
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 420
     - label:
       maxValue:
       minValue:
@@ -447,6 +499,10 @@
       - id: history.query_run_count
         name: History Query Run Count
         axisId: history.query_run_count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 447
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 435
     trend_lines: []
     reference_lines:
     - reference_type: line
@@ -460,14 +516,18 @@
       color: "#07480b"
       label: 'Average User Count: {{mean}}'
       value_format: "#"
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 452
     series_labels:
       user.count: User Count
-    row: 0
+    listen:
+      History Lookback: history.created_date
+    row: 2
     col: 0
     width: 12
     height: 7
-  - name: Top Developers By Commits
-    title: Top Developers By Commits
+  - title: Top Developers By Commits
+    name: Top Developers By Commits
     model: looker_ext
     explore: event_full
     type: table
@@ -502,16 +562,20 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 500
       bold: false
       italic: false
       strikethrough: false
       fields:
-    row: 15
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 495
+    row: 20
     col: 0
     width: 6
     height: 8
-  - name: Development Activity
-    title: Development Activity
+  - title: Development Activity
+    name: Development Activity
     model: looker_ext
     explore: event_full
     type: looker_line
@@ -571,10 +635,14 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 569
       bold: false
       italic: false
       strikethrough: false
       fields:
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 564
     series_types: {}
     colors:
     - 'palette: Mixed Neutrals'
@@ -595,6 +663,10 @@
       - id: event.count
         name: Event Count
         axisId: event.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 595
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 583
     - label:
       maxValue:
       minValue:
@@ -610,12 +682,16 @@
       - id: user.count
         name: User Count
         axisId: user.count
-    row: 15
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 610
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 598
+    row: 20
     col: 12
     width: 12
     height: 8
-  - name: PDT Build Count Last 7 Days
-    title: PDT Build Count Last 7 Days
+  - title: PDT Build Count Last 7 Days
+    name: PDT Build Count Last 7 Days
     model: looker_ext
     explore: pdt_log_full
     type: table
@@ -671,18 +747,22 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 669
       bold: false
       italic: false
       strikethrough: false
       fields:
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 664
     series_labels:
       pdt_log.count: Build Complete Count
-    row: 15
+    row: 20
     col: 6
     width: 6
     height: 8
-  - name: Scheduled Plan Activity
-    title: Scheduled Plan Activity
+  - title: Scheduled Plan Activity
+    name: Scheduled Plan Activity
     model: looker_ext
     explore: scheduled_plan_full
     type: looker_column
@@ -753,22 +833,68 @@
       - id: html
         name: html
         axisId: scheduled_job.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 753
       - id: inline_table
         name: inline_table
         axisId: scheduled_job.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 756
       - id: json
         name: json
         axisId: scheduled_job.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 759
       - id: txt
         name: txt
         axisId: scheduled_job.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 762
       - id: wysiwyg_pdf
         name: wysiwyg_pdf
         axisId: scheduled_job.count
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 765
       - id: xlsx
         name: xlsx
         axisId: scheduled_job.count
-    row: 23
-    col: 0
+        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __LINE_NUM: 768
+      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __LINE_NUM: 741
+    row: 9
+    col: 12
     width: 12
-    height: 7
+    height: 8
+  - name: Adoption Tracking
+    type: text
+    title_text: Adoption Tracking
+    row: 0
+    col: 0
+    width: 24
+    height: 2
+  - name: Developer Trends
+    type: text
+    title_text: Developer Trends
+    row: 17
+    col: 0
+    width: 24
+    height: 3
+  - name: Performance
+    type: text
+    title_text: Performance
+    row: 28
+    col: 0
+    width: 24
+    height: 3
+  filters:
+  - name: History Lookback
+    title: History Lookback
+    type: date_filter
+    default_value: 30 days
+    model:
+    explore:
+    field:
+    listens_to_filters: []
+    allow_multiple_values: true
+    required: false
