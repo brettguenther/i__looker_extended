@@ -5,7 +5,7 @@
   - name: Source Activity
     title: Source Activity
     model: looker_ext
-    explore: history
+    explore: history_full
     type: looker_column
     fields:
     - user.count
@@ -116,7 +116,7 @@
   - name: Model Explore Adoption
     title: Model Explore Adoption
     model: looker_ext
-    explore: history
+    explore: history_full
     type: table
     fields:
     - query.model
@@ -242,7 +242,7 @@
   - name: Dialect and Connection Usage
     title: Dialect and Connection Usage
     model: looker_ext
-    explore: history
+    explore: history_full
     type: looker_column
     fields:
     - user.count
@@ -372,7 +372,7 @@
   - name: User Activity
     title: User Activity
     model: looker_ext
-    explore: history
+    explore: history_full
     type: looker_line
     fields:
     - history.created_date
@@ -469,7 +469,7 @@
   - name: Top Developers By Commits
     title: Top Developers By Commits
     model: looker_ext
-    explore: event
+    explore: event_full
     type: table
     fields:
     - event.count
@@ -513,7 +513,7 @@
   - name: Development Activity
     title: Development Activity
     model: looker_ext
-    explore: event
+    explore: event_full
     type: looker_line
     fields:
     - event.count
@@ -617,7 +617,7 @@
   - name: PDT Build Count Last 7 Days
     title: PDT Build Count Last 7 Days
     model: looker_ext
-    explore: pdt_log
+    explore: pdt_log_full
     type: table
     fields:
     - pdt_log.count
@@ -684,7 +684,7 @@
   - name: Scheduled Plan Activity
     title: Scheduled Plan Activity
     model: looker_ext
-    explore: scheduled_plan
+    explore: scheduled_plan_full
     type: looker_column
     fields:
     - scheduled_plan_destination.format
