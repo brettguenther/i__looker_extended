@@ -14,7 +14,7 @@ explore: history_full {
 explore: pdt_log_full  {
   extends: [pdt_log]
   from: pdt_log
-  extends: [pdt_log]
+ view_name: pdt_log
 }
 
 explore: scheduled_plan_full  {
