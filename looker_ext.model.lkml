@@ -2,8 +2,8 @@ connection: "looker"
 
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
-include: "/base_looker/*.view"
-include: "/base_looker/*.model"
+include: "/i__looker_base/*.view"
+include: "/i__looker_base/*.model"
 
 explore: history_full {
   extends: [history]
@@ -27,4 +27,16 @@ explore: event_full {
   extends: [event]
   from: event
   view_name: event
+}
+
+explore: look_full {
+  extends: [look]
+  from: look
+  view_name: look
+}
+
+explore: dashboard_performance_full {
+  extends: [dashboard_performance]
+  from: dashboard_run_event_stats
+  view_name: dashboard_performance
 }

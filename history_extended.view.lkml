@@ -1,4 +1,4 @@
-include: "/base_looker/history.view"
+include: "/i__looker_base/history.view"
 view: history_full {
   sql_table_name: history ;;
   extends: [history]
@@ -10,17 +10,26 @@ view: history_full {
       value: "query"
     }
   }
-  measure: count_queries_hitting_database {
+  measure: cache_ratio {
+    type: number
+    sql: (${query_run_count_cache}/${query_run_count}) ;;
+    value_format_name: "percent_0"
+  }
+  measure: query_run_count_no_cache {
     type: count
     filters: {
       field: history.result_source
       value: "query"
     }
   }
-  measure: percent_cache_hits {
-    type: number
-    sql: 1-(${count_queries_hitting_database}/${query_run_count}) ;;
+  measure: query_run_count_cache {
+    type: count
+    filters: {
+      field: history.result_source
+      value: "cache"
+    }
   }
+
   measure: count_queries_erroring {
     type: count
     filters: {

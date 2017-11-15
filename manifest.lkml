@@ -4,5 +4,5 @@ project_name: "looker_extended"
 # # on this instance with include: statements
 #
 local_dependency: {
-  project: "base_looker"
+  project: "i__looker_base"
 }
