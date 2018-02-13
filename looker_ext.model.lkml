@@ -51,8 +51,11 @@ explore: scheduled_plan_full  {
 
 explore: event_full {
   extends: [event]
-  from: event
+  from: event_extended
   view_name: event
+#   join: user {
+#     sql_on: ${event.user_id} = ${user.id};;
+#   }
 }
 
 explore: look_full {
@@ -68,3 +71,5 @@ explore: dashboard_performance_full {
 }
 
 explore: content_usage {}
+
+explore: content_view {}
