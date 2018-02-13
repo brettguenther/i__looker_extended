@@ -1,4 +1,4 @@
-include: "/i__looker_base/history.view"
+include: "/base_looker1/history.view"
 view: history_full {
   sql_table_name: history ;;
   extends: [history]

@@ -2,14 +2,40 @@ connection: "looker"
 
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
-include: "/i__looker_base/*.view"
-include: "/i__looker_base/*.model"
+include: "/base_looker1/*.view"
+include: "/base_looker1/*.model"
 
 explore: history_full {
   extends: [history]
   view_name: history
   from: history_full
+#   join: user {
+#     from: user_extended
+#   }
 }
+
+explore: user_full {
+  extends: [user]
+  view_name: user
+  from: user_extended
+  join: credentials_email {
+    sql_on: ${user.id} = ${credentials_email.user_id} ;;
+    relationship: many_to_one
+  }
+  join: credentials_google {
+    sql_on: ${user.id} = ${credentials_google.user_id} ;;
+    relationship: many_to_one
+  }
+  join: credentials_ldap {
+    sql_on: ${user.id} = ${credentials_ldap.user_id} ;;
+    relationship: many_to_one
+  }
+  join: credentials_saml {
+    sql_on: ${user.id} = ${credentials_saml.user_id} ;;
+    relationship: many_to_one
+  }
+}
+
 
 explore: pdt_log_full  {
   extends: [pdt_log]
@@ -40,3 +66,5 @@ explore: dashboard_performance_full {
   from: dashboard_run_event_stats
   view_name: dashboard_performance
 }
+
+explore: content_usage {}
