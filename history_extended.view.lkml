@@ -12,17 +12,24 @@ view: history_full {
   }
   measure: cache_ratio {
     type: number
-    sql: (${query_run_count_cache}/${query_run_count}) ;;
+    description: "Percent of queries run that leveraged cache"
+    sql: (${count_query_run_cache}/${query_run_count}) ;;
     value_format_name: "percent_0"
   }
-  measure: query_run_count_no_cache {
+  measure: count_query_run_no_cache {
     type: count
     filters: {
       field: history.result_source
       value: "query"
     }
   }
-  measure: query_run_count_cache {
+  dimension_group: completed {
+    type: time
+    datatype: datetime
+    sql: ${TABLE}.completed_at ;;
+  }
+
+  measure: count_query_run_cache {
     type: count
     filters: {
       field: history.result_source
@@ -30,15 +37,27 @@ view: history_full {
     }
   }
 
-  measure: count_queries_erroring {
+  measure: count_queries_killed {
     type: count
     filters: {
       field: history.status
       value: "killed"
     }
   }
-  measure: percent_queries_erroring {
+
+  measure: count_queries_errored {
+    type: count
+    filters: {
+      field: history.status
+      value: "error"
+    }
+  }
+  measure: percent_queries_killed {
     type: number
-    sql: ${count_queries_erroring}/${query_run_count} ;;
+    sql: ${count_queries_killed}/${query_run_count} ;;
+  }
+  measure: percent_queries_errored {
+    type: number
+    sql: ${count_queries_errored}/${query_run_count} ;;
   }
 }

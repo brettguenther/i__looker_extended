@@ -51,7 +51,6 @@ view: content_view {
     type: number
     sql: ${TABLE}.content_metadata_id ;;
   }
-
   dimension: is_generic {
     type: string
     sql: ${TABLE}.is_generic ;;

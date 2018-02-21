@@ -23,7 +23,14 @@ sql_table_name: content_usage;;
 
   dimension: days_since_last_accessed {
     type: number
-    sql: DATEDIFF(now(),${last_accessed_at_raw} ;;
+    sql: DATEDIFF(now(),${last_accessed_at_raw}) ;;
+  }
+
+  dimension: days_since_last_access_tiers {
+    type: tier
+    tiers: [0,7,14,30,60,90]
+    sql: ${days_since_last_accessed} ;;
+    style: interval
   }
 
   dimension: prefetch_count {
