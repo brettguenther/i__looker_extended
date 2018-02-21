@@ -3,13 +3,16 @@ include: "*.dashboard.lookml"  # include all dashboards in this project
 include: "/base_looker1/*.view"
 include: "/base_looker1/*.model"
 
-explore: history_full {
-  extends: [history]
-  view_name: history
-  from: history_full
-#   join: user {
-#     from: user_extended
-#   }
+explore: project_status {
+  hidden: yes
+}
+
+explore: content_view  {
+  hidden: yes
+}
+
+explore: user_weekly_usage {
+  hidden: yes
 }
 
 explore: user_full {
@@ -34,7 +37,31 @@ explore: user_full {
   }
 }
 
-explore: user_weekly_usage {}
+explore: history_full {
+  extends: [history]
+  view_name: history
+  from: history_full
+  join: user {
+    from: user_extended
+  }
+  join: credentials_email {
+    sql_on: ${user.id} = ${credentials_email.user_id} ;;
+    relationship: many_to_one
+  }
+  join: credentials_google {
+    sql_on: ${user.id} = ${credentials_google.user_id} ;;
+    relationship: many_to_one
+  }
+  join: credentials_ldap {
+    sql_on: ${user.id} = ${credentials_ldap.user_id} ;;
+    relationship: many_to_one
+  }
+  join: credentials_saml {
+    sql_on: ${user.id} = ${credentials_saml.user_id} ;;
+    relationship: many_to_one
+  }
+}
+
 
 explore: pdt_log_full  {
   extends: [pdt_log]
@@ -55,9 +82,6 @@ explore: event_full {
   extends: [event]
   from: event_extended
   view_name: event
-#   join: user {
-#     sql_on: ${event.user_id} = ${user.id};;
-#   }
 }
 
 explore: look_full {
@@ -88,8 +112,6 @@ explore: content_usage {
     sql_on: ${content_usage.content_id} = ${look.id} and ${content_usage.content_type} = "look";;
   }
 }
-
-explore: content_view {}
 
 explore: user_weekly_activity {
   join: user {

@@ -4,22 +4,29 @@ view: project_status {
           LEFT JOIN sandboxcl.event_attribute as joins on event.id = joins.event_id and joins.name = 'joins'
           LEFT JOIN sandboxcl.event_attribute as project on event.id = project.event_id and project.name = 'project'
           LEFT JOIN sandboxcl.event_attribute as explores on event.id = explores.event_id and explores.name = 'explores'
-          where event.name = 'git_pull_production'
+          WHERE event.name = 'git_pull_production'
+          GROUP BY 1
       ;;
   }
   dimension: project {
     type: string
     sql: ${TABLE}.project ;;
   }
-
   dimension: number_of_joins {
     type: number
     sql: ${TABLE}.number_of_joins ;;
   }
-
   dimension: number_of_explores {
     type: number
     sql: ${TABLE}.number_of_explores ;;
+  }
+  measure: average_number_of_joins {
+    type: average
+    sql: ${number_of_joins} ;;
+  }
+  measure: average_number_of_explores {
+    type: average
+    sql: ${number_of_explores} ;;
   }
   measure: count {
     type: count

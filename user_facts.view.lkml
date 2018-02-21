@@ -13,12 +13,11 @@ view: user_weekly_activity {
       daily_usage.look_query_count as look_query_count,
       daily_usage_offset.look_query_count as look_query_count_last_week,
       daily_usage.explore_query_count as explore_query_count,
-      daily_usage_offset.explore_query_count as explore_query_count_last_week,
+      daily_usage_offset.explore_query_count as explore_query_count_last_week
       FROM ${user_weekly_usage.SQL_TABLE_NAME} AS daily_usage
       -- need to persist to avoid separate temp table as you can't self join on temp tables
-      -- JOIN ${user_weekly_usage_2.SQL_TABLE_NAME} AS daily_usage_offset ON ((daily_usage.user_id  = daily_usage_offset.user_id) AND (daily_usage.week - 1  = daily_usage_offset.week))
       JOIN ${user_weekly_usage.SQL_TABLE_NAME} AS daily_usage_offset ON daily_usage.user_id  = daily_usage_offset.user_id AND daily_usage.week - 1  = daily_usage_offset.week
-      GROUP BY 1,2,3,4
+      GROUP BY 1,2,3,4,5,6,7,8
       ;;
     sql_trigger_value: SELECT CURDATE() ;;
     indexes: ["week","user_id"]
@@ -56,6 +55,16 @@ view: user_weekly_activity {
     hidden: yes
     sql: ${TABLE}.explore_query_count_last_week ;;
   }
+  dimension: look_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.look_query_count ;;
+  }
+  dimension: look_query_count_last_week {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.look_query_count_last_week ;;
+  }
   dimension: user_type {
     case: {
       when: {
@@ -69,7 +78,6 @@ view: user_weekly_activity {
       else: "Consumer"
     }
   }
-
   measure:  count_dashboard_queries_run {
     type: sum
     sql: ${dashboard_query_count} ;;
@@ -81,6 +89,32 @@ view: user_weekly_activity {
   measure: percent_change_dashboard_queries_run {
     type: number
     sql: SUM(${dashboard_query_count})/SUM(${dashboard_query_count_last_week}) ;;
+    value_format_name: percent_0
+  }
+  measure:  count_explore_queries_run {
+    type: sum
+    sql: ${explore_query_count} ;;
+  }
+  measure:  count_explore_queries_run_last_week {
+    type: sum
+    sql: ${explore_query_count_last_week} ;;
+  }
+  measure: percent_change_explore_queries_run {
+    type: number
+    sql: SUM(${explore_query_count})/SUM(${explore_query_count_last_week}) ;;
+    value_format_name: percent_0
+  }
+  measure:  count_look_queries_run {
+    type: sum
+    sql: ${look_query_count} ;;
+  }
+  measure:  count_look_queries_run_last_week {
+    type: sum
+    sql: ${look_query_count_last_week} ;;
+  }
+  measure: percent_change_look_queries_run {
+    type: number
+    sql: SUM(${explore_query_count})/SUM(${explore_query_count_last_week}) ;;
     value_format_name: percent_0
   }
 }
@@ -175,64 +209,6 @@ view: user_weekly_usage {
     fields: [user_id, created_date, query_run_count, approximate_usage_in_minutes]
   }
 }
-
-#need this as you can't reference a temp table twice for self join
-view: user_weekly_usage_2 {
-  derived_table: {
-    sql: SELECT
-        user.ID  AS user_id,
-        -- DATE(history.CREATED_AT ) AS created_date,
-        YEARWEEK(history.CREATED_AT) AS week,
-        COUNT(*) AS query_run_count,
-        SUM(CASE WHEN history.source = 'dashboard' THEN 1 ELSE 0 END) AS dashboard_query_count,
-        SUM(CASE WHEN history.source = 'explore' THEN 1 ELSE 0 END) AS explore_query_count,
-        SUM(CASE WHEN history.source = 'sqlrunner' THEN 1 ELSE 0 END) AS sql_runner_query_count,
-        SUM(CASE WHEN history.source = 'look' THEN 1 ELSE 0 END) AS look_query_count,
-        SUM(CASE WHEN history.source = 'drill_modal' THEN 1 ELSE 0 END) AS drill_query_count,
-        SUM(CASE WHEN history.source = 'api3' THEN 1 ELSE 0 END) AS api_query_count,
-        SUM(CASE WHEN history.source LIKE 'render_manager_cache%' THEN 1 ELSE 0 END) as pdf_render_query_count,
-        COUNT(DISTINCT
-              CASE WHEN history.source <> 'scheduled_task' THEN
-                CONCAT(
-                 CAST(history.user_id as CHAR(30)),
-                 FLOOR(UNIX_TIMESTAMP(history.created_at)/(60*5))
-              )
-              ELSE NULL
-              END
-            )*5
-                AS approximate_usage_in_minutes
-        FROM history  AS history
-        LEFT JOIN user ON history.USER_ID  = user.ID
-        GROUP BY 1,2 ;;
-  }
-  dimension: user_id {
-    type: number
-    sql: ${TABLE}.user_id ;;
-  }
-
-  dimension: created_date {
-    type: date
-    sql: ${TABLE}.created_date ;;
-  }
-
-  dimension: query_run_count {
-    type: number
-    sql: ${TABLE}.query_run_count ;;
-  }
-
-  dimension: approximate_usage_in_minutes {
-    type: number
-    sql: ${TABLE}.approximate_usage_in_minutes ;;
-  }
-  measure: count {
-    type: count
-    drill_fields: [detail*]
-  }
-  set: detail {
-    fields: [user_id, created_date, query_run_count, approximate_usage_in_minutes]
-  }
-}
-
 
 view: user_daily_app_activity {
   derived_table: {
