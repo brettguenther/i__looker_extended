@@ -30,7 +30,7 @@ sql_table_name: content_usage;;
     type: tier
     tiers: [0,7,14,30,60,90]
     sql: ${days_since_last_accessed} ;;
-    style: interval
+    style: integer
   }
 
   dimension: prefetch_count {

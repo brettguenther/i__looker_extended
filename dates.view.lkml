@@ -9,6 +9,8 @@ view: numbers {
         + p5.n * POWER(2,5)
         + p6.n * POWER(2,6)
         + p7.n * POWER(2,7)
+        + p8.n * POWER(2,8)
+        + p9.n * POWER(2,9)
         as number
       FROM
         (SELECT 0 as n UNION SELECT 1) p0,
@@ -18,7 +20,9 @@ view: numbers {
         (SELECT 0 as n UNION SELECT 1) p4,
         (SELECT 0 as n UNION SELECT 1) p5,
         (SELECT 0 as n UNION SELECT 1) p6,
-        (SELECT 0 as n UNION SELECT 1) p7 ;;
+        (SELECT 0 as n UNION SELECT 1) p7,
+        (SELECT 0 as n UNION SELECT 1) p8,
+        (SELECT 0 as n UNION SELECT 1) p9 ;;
   }
 
 }
@@ -26,7 +30,7 @@ view: numbers {
 view: dates {
   derived_table: {
     sql: SELECT
-        DATE_ADD('2001-01-01', INTERVAL numbers.number DAY)
+        DATE_ADD('2016-01-01', INTERVAL numbers.number DAY)
         as series_date
         FROM ${numbers.SQL_TABLE_NAME} AS numbers  ;;
   }

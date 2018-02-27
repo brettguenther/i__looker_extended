@@ -11,8 +11,17 @@ explore: content_view  {
   hidden: yes
 }
 
-explore: user_weekly_usage {
+explore: dates {
+  view_label: "Daily User Activity"
   hidden: yes
+  join: user_daily_usage {
+    relationship: one_to_many
+    sql_on: ${dates.date} = ${user_daily_usage.created_date} ;;
+  }
+  join: user_daily_app_activity {
+    relationship: one_to_many
+    sql_on: ${dates.date} = ${user_daily_app_activity.created_date} ;;
+  }
 }
 
 explore: user_full {
@@ -86,14 +95,17 @@ explore: event_full {
 
 explore: look_full {
   extends: [look]
-  from: look
+  from: look_extended
   view_name: look
 }
 
 explore: dashboard_full {
   extends: [dashboard]
-  from: dashboard
-  view_name: dashboard
+  from: dashboard_layout_component
+  view_name: dashboard_layout_component
+  join: dashboard {
+    from: dashboard_extended
+  }
 }
 
 explore: dashboard_performance_full {
@@ -113,9 +125,9 @@ explore: content_usage {
   }
 }
 
-explore: user_weekly_activity {
+explore: user_weekly_query_activity {
   join: user {
-    sql_on: ${user_weekly_activity.user_id} = ${user.id} ;;
+    sql_on: ${user_weekly_query_activity.user_id} = ${user.id} ;;
     relationship: many_to_one
   }
   join: role_user {
