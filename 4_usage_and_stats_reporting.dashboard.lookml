@@ -12,7 +12,7 @@
     - history.query_run_count
     - history.source
     filters:
-      history.created_date: 30 days
+#      history.created_date: 30 days
       history.source: "-Other"
     sorts:
     - history.query_run_count desc
@@ -139,7 +139,7 @@
     - user.count
     - history.query_run_count
     filters:
-      history.created_date: 30 days
+      # history.created_date: 30 days
       history.source: "-Other,-Scheduled Task,-Scheduled Task,-Suggest Filter,-Renderer"
       query.model: "-NULL"
     sorts:
@@ -282,7 +282,7 @@
     - history.average_runtime
     filters:
       history.connection_name: "-NULL"
-      history.created_date: 30 days
+      # history.created_date: 30 days
       history.result_source: query
       history.source: "-Other"
     sorts:
@@ -429,7 +429,7 @@
     fill_fields:
     - history.created_date
     filters:
-      history.created_date: 30 days
+      # history.created_date: 30 days
       history.source: "-Other,-Scheduled Task,-Scheduled Task,-Suggest Filter,-Renderer"
     sorts:
     - history.created_date desc

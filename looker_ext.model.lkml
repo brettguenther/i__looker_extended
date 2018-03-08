@@ -56,18 +56,22 @@ explore: history_full {
   join: credentials_email {
     sql_on: ${user.id} = ${credentials_email.user_id} ;;
     relationship: many_to_one
+    fields: []
   }
   join: credentials_google {
     sql_on: ${user.id} = ${credentials_google.user_id} ;;
     relationship: many_to_one
+    fields: []
   }
   join: credentials_ldap {
     sql_on: ${user.id} = ${credentials_ldap.user_id} ;;
     relationship: many_to_one
+    fields: []
   }
   join: credentials_saml {
     sql_on: ${user.id} = ${credentials_saml.user_id} ;;
     relationship: many_to_one
+    fields: []
   }
 }
 
