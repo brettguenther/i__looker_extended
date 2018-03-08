@@ -12,7 +12,7 @@
     - history.query_run_count
     - history.source
     filters:
-#      history.created_date: 30 days
+      # history.created_date: 30 days
       history.source: "-Other"
     sorts:
     - history.query_run_count desc
@@ -1016,8 +1016,8 @@
     col: 0
     width: 12
     height: 6
-  - title: New Tile
-    name: New Tile
+  - title: Scheduled Job Rates
+    name: Scheduled Job Rates
     model: looker_ext
     explore: scheduled_plan_full
     type: looker_column
@@ -1095,6 +1095,9 @@
         axisId: scheduled_job.percent_of_scheduled_jobs_completed
     column_spacing_ratio:
     column_group_spacing_ratio:
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
     row: 37
     col: 12
     width: 12
@@ -1568,6 +1571,91 @@
     col: 0
     width: 24
     height: 3
+  - title: Top Content Adopted
+    name: Top Content Adopted
+    model: looker_ext
+    explore: history_full
+    type: looker_column
+    fields:
+    - user.count
+    - history.query_run_count
+    - history.real_dash_id
+    - look.id
+    filters:
+      history.source: Dashboard,Saved Look
+    sorts:
+    - user.count desc
+    limit: 10
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_types: {}
+    y_axes:
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: left
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: user.count
+        name: User Count
+        axisId: user.count
+    - label: Query Run Count
+      maxValue:
+      minValue:
+      orientation: left
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: history.query_run_count
+        name: History Query Run Count
+        axisId: history.query_run_count
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    row: 17
+    col: 12
+    width: 12
+    height: 6
   filters:
   - name: History Lookback
     title: History Lookback
