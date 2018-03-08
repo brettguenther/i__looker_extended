@@ -14,7 +14,7 @@ view: history_full {
     type: number
     description: "Percent of queries run that leveraged cache"
     sql: (${count_query_run_cache}/${query_run_count}) ;;
-    value_format_name: "percent_0"
+    value_format_name: percent_0
   }
   measure: count_query_run_no_cache {
     type: count
@@ -54,10 +54,12 @@ view: history_full {
   }
   measure: percent_queries_killed {
     type: number
+    value_format_name: percent_0
     sql: ${count_queries_killed}/${query_run_count} ;;
   }
   measure: percent_queries_errored {
     type: number
+    value_format_name: percent_0
     sql: ${count_queries_errored}/${query_run_count} ;;
   }
 }

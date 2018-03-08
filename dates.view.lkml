@@ -32,7 +32,8 @@ view: dates {
     sql: SELECT
         DATE_ADD('2016-01-01', INTERVAL numbers.number DAY)
         as series_date
-        FROM ${numbers.SQL_TABLE_NAME} AS numbers  ;;
+        FROM ${numbers.SQL_TABLE_NAME} AS numbers
+        where DATE_ADD('2016-01-01', INTERVAL numbers.number DAY) <= NOW() ;;
   }
   dimension: date {
     type: date

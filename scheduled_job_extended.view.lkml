@@ -17,7 +17,8 @@ view: scheduled_job_extended {
     }
   }
   measure: percent_of_scheduled_jobs_completed {
-    value_format_name: "percent_0"
+    value_format_name: percent_0
+    type: number
     description: "Percent of scheduled jobs that successfully ran"
     sql: ${count_scheduled_jobs_completed}/${count} ;;
   }
