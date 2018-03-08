@@ -23,10 +23,22 @@ view: project_status {
   measure: average_number_of_joins {
     type: average
     sql: ${number_of_joins} ;;
+    drill_fields: [project, number_of_joins]
   }
   measure: average_number_of_explores {
     type: average
     sql: ${number_of_explores} ;;
+    drill_fields: [detail*]
+  }
+  measure: max_number_of_joins {
+    type: max
+    sql: ${number_of_joins} ;;
+    drill_fields: [project, number_of_joins]
+  }
+  measure: max_number_of_explores {
+    type: max
+    sql: ${number_of_explores} ;;
+    drill_fields: [detail*]
   }
   measure: count {
     type: count

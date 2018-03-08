@@ -11,19 +11,6 @@ explore: content_view  {
   hidden: yes
 }
 
-explore: dates {
-  view_label: "Daily User Activity"
-  hidden: yes
-  join: user_daily_usage {
-    relationship: one_to_many
-    sql_on: ${dates.date} = ${user_daily_usage.created_date} ;;
-  }
-  join: user_daily_app_activity {
-    relationship: one_to_many
-    sql_on: ${dates.date} = ${user_daily_app_activity.created_date} ;;
-  }
-}
-
 explore: user_full {
   extends: [user]
   view_name: user
@@ -74,7 +61,6 @@ explore: history_full {
     fields: []
   }
 }
-
 
 explore: pdt_log_full  {
   extends: [pdt_log]
@@ -129,52 +115,11 @@ explore: content_usage {
   }
 }
 
-explore: user_weekly_query_activity {
-  join: user {
-    sql_on: ${user_weekly_query_activity.user_id} = ${user.id} ;;
-    relationship: many_to_one
-  }
-  join: role_user {
-    sql_on: role_user.user_id = user.id ;;
+explore: user_daily_query_activity {
+  view_label: "Daily User Activity"
+  hidden: yes
+  join: user_daily_app_activity {
     relationship: one_to_many
-    fields: []
-  }
-
-  join: embed_user {
-    from: credentials_embed
-    sql_on: user.id = embed_user.user_id ;;
-    relationship: one_to_one
-  }
-
-  join: user_direct_role {
-    relationship: one_to_many
-    sql_on: ${user.id} = ${user_direct_role.user_id} ;;
-    fields: []
-  }
-
-  join: group_user {
-    relationship: one_to_many
-    sql_on: ${user.id} = ${group_user.user_id} ;;
-    fields: []
-  }
-
-  join: group {
-    relationship: one_to_many
-    sql_on: ${group.id} = ${group_user.group_id} ;;
-  }
-
-  join: role_group {
-    relationship: one_to_many
-    sql_on: ${role_group.group_id} = ${group_user.group_id} ;;
-    fields: []
-  }
-
-  join: role {
-    relationship: one_to_many
-    sql_on: ${role.id} = ${user_direct_role.role_id} or ${role_group.role_id} = ${role.id} ;;
-  }
-
-  join: permission_set {
-    foreign_key: role.permission_set_id
+    sql_on: ${user_daily_query_activity.created_date} = ${user_daily_app_activity.created_date} and ${user_daily_query_activity.user_id} = ${user_daily_app_activity.user_id};;
   }
 }

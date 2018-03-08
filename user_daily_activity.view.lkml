@@ -1,4 +1,7 @@
-view: user_daily_usage {
+#backbone of user_date_combinations_since_user_created
+view: user_dates {}
+
+view: user_daily_query_activity {
   derived_table: {
     sql: SELECT
         user.ID  AS user_id,
@@ -24,8 +27,8 @@ view: user_daily_usage {
         FROM history  AS history
         LEFT JOIN user ON history.USER_ID  = user.ID
         GROUP BY 1,2 ;;
-    indexes: ["user_id","created_date"]
-    sql_trigger_value: SELECT CURDATE() ;;
+#     indexes: ["user_id","created_date"]
+#     sql_trigger_value: SELECT CURDATE() ;;
   }
   dimension: user_id {
     type: number
@@ -40,14 +43,14 @@ view: user_daily_usage {
     type: date
     sql: ${TABLE}.created_date ;;
   }
-
   dimension: query_run_count {
     type: number
+    hidden: yes
     sql: ${TABLE}.query_run_count ;;
   }
-
   dimension: approximate_usage_in_minutes {
     type: number
+    hidden: yes
     sql: ${TABLE}.approximate_usage_in_minutes ;;
   }
   measure: count {
@@ -58,7 +61,10 @@ view: user_daily_usage {
     type: sum
     sql: ${query_run_count} ;;
   }
-
+  measure: sum_approximate_usage_in_minutes {
+    type: sum
+    sql: ${approximate_usage_in_minutes} ;;
+  }
   set: detail {
     fields: [user_id, created_date, query_run_count, approximate_usage_in_minutes]
   }
@@ -79,10 +85,6 @@ view: user_daily_app_activity {
           FROM event  AS event
           -- LEFT JOIN event_attribute on event.id = event_attribute.event_id
           GROUP BY 1,2 ;;
-  }
-  measure: count {
-    type: count
-    drill_fields: [detail*]
   }
   dimension: user_date {
     primary_key: yes
@@ -133,7 +135,10 @@ view: user_daily_app_activity {
     type: number
     sql: ${TABLE}.export_query_count ;;
   }
-
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+  }
   measure: sum_merge_query {
     type: sum
     sql: ${merge_query_count} ;;
