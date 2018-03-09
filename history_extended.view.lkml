@@ -10,6 +10,13 @@ view: history_full {
       value: "query"
     }
   }
+    dimension: runtime {
+      label: "Runtime in Seconds"
+      type: number
+      sql: ${TABLE}.RUNTIME ;;
+      value_format_name: decimal_1
+    }
+
   measure: cache_ratio {
     type: number
     sql: (${query_run_count_cache}/${query_run_count}) ;;

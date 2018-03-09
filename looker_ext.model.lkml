@@ -9,6 +9,14 @@ explore: history_full {
   extends: [history]
   view_name: history
   from: history_full
+  join: credentials_email {
+    from: credentails
+    sql_on: ${user.id} = ${credentials_email.user_id} ;;
+  }
+  join: credentials_ldap {
+    fields: []
+    sql_on: ${user.id} = ${credentials_ldap.user_id} ;;
+  }
 }
 
 explore: pdt_log_full  {
@@ -17,11 +25,21 @@ explore: pdt_log_full  {
  view_name: pdt_log
 }
 
+explore: dashboard_full {
+  extends: [dashboard]
+  join: dashboard_filter {
+    sql_on: ${dashboard_filter.dashboard_id} = ${dashboard.id} ;;
+    relationship: one_to_many
+  }
+}
+
 explore: scheduled_plan_full  {
   extends: [scheduled_plan]
   from: scheduled_plan
   view_name: scheduled_plan
 }
+
+explore: content_usage {}
 
 explore: event_full {
   extends: [event]
