@@ -12,7 +12,6 @@
     - history.query_run_count
     - history.source
     filters:
-      # history.created_date: 30 days
       history.source: "-Other"
     sorts:
     - history.query_run_count desc
@@ -71,9 +70,9 @@
       - id: user.count
         name: User Count
         axisId: user.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
         __LINE_NUM: 71
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
       __LINE_NUM: 59
     - label:
       maxValue:
@@ -90,10 +89,10 @@
       - id: history.query_run_count
         name: Query Run Count
         axisId: history.query_run_count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 86
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 74
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 90
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 78
     trend_lines: []
     reference_lines: []
     limit_displayed_rows_values:
@@ -113,14 +112,14 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 103
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 111
       bold: false
       italic: false
       strikethrough: false
       fields:
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 98
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 106
     listen:
       History Lookback: history.created_date
     row: 2
@@ -139,7 +138,6 @@
     - user.count
     - history.query_run_count
     filters:
-      # history.created_date: 30 days
       history.source: "-Other,-Scheduled Task,-Scheduled Task,-Suggest Filter,-Renderer"
       query.model: "-NULL"
     sorts:
@@ -200,10 +198,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 186
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 174
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 200
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 188
     - label:
       maxValue:
       minValue:
@@ -219,10 +217,10 @@
       - id: history.query_run_count
         name: History Query Run Count
         axisId: history.query_run_count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 201
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 189
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 219
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 207
     trend_lines: []
     reference_lines:
     - reference_type: line
@@ -236,8 +234,8 @@
       color: "#148f1b"
       label: 'Average User Count: {{mean}}'
       value_format: "#"
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 206
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 228
     limit_displayed_rows_values:
       show_hide: hide
       first_last: first
@@ -255,14 +253,14 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 229
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 253
       bold: false
       italic: false
       strikethrough: false
       fields:
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 224
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 248
     listen:
       History Lookback: history.created_date
     row: 9
@@ -282,7 +280,6 @@
     - history.average_runtime
     filters:
       history.connection_name: "-NULL"
-      # history.created_date: 30 days
       history.result_source: query
       history.source: "-Other"
     sorts:
@@ -342,10 +339,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 312
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 300
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 342
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 330
     - label: ''
       maxValue:
       minValue:
@@ -361,10 +358,10 @@
       - id: history.average_runtime
         name: Average Runtime
         axisId: history.average_runtime
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 327
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 315
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 361
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 349
     - label:
       maxValue:
       minValue:
@@ -380,10 +377,10 @@
       - id: history.query_run_count
         name: Query Run Count
         axisId: history.query_run_count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 342
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 330
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 380
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 368
     trend_lines: []
     reference_lines: []
     limit_displayed_rows_values:
@@ -403,17 +400,17 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 359
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 401
       bold: false
       italic: false
       strikethrough: false
       fields:
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 354
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 396
     listen:
       History Lookback: history.created_date
-    row: 37
+    row: 44
     col: 0
     width: 12
     height: 8
@@ -429,7 +426,6 @@
     fill_fields:
     - history.created_date
     filters:
-      # history.created_date: 30 days
       history.source: "-Other,-Scheduled Task,-Scheduled Task,-Suggest Filter,-Renderer"
     sorts:
     - history.created_date desc
@@ -480,10 +476,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 432
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 420
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 480
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 468
     - label:
       maxValue:
       minValue:
@@ -499,10 +495,10 @@
       - id: history.query_run_count
         name: History Query Run Count
         axisId: history.query_run_count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 447
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 435
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 499
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 487
     trend_lines: []
     reference_lines:
     - reference_type: line
@@ -516,8 +512,8 @@
       color: "#07480b"
       label: 'Average User Count: {{mean}}'
       value_format: "#"
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 452
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 508
     series_labels:
       user.count: User Count
     listen:
@@ -562,15 +558,15 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 500
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 560
       bold: false
       italic: false
       strikethrough: false
       fields:
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 495
-    row: 26
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 555
+    row: 33
     col: 0
     width: 6
     height: 8
@@ -635,14 +631,14 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 569
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 633
       bold: false
       italic: false
       strikethrough: false
       fields:
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 564
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 628
     series_types: {}
     colors:
     - 'palette: Mixed Neutrals'
@@ -663,10 +659,10 @@
       - id: event.count
         name: Event Count
         axisId: event.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 595
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 583
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 663
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 651
     - label:
       maxValue:
       minValue:
@@ -682,11 +678,11 @@
       - id: user.count
         name: User Count
         axisId: user.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 610
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 598
-    row: 26
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 682
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 670
+    row: 33
     col: 12
     width: 12
     height: 8
@@ -747,17 +743,17 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 669
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 745
       bold: false
       italic: false
       strikethrough: false
       fields:
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 664
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 740
     series_labels:
       pdt_log.count: Build Complete Count
-    row: 26
+    row: 33
     col: 6
     width: 6
     height: 8
@@ -833,35 +829,35 @@
       - id: html
         name: html
         axisId: scheduled_job.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 753
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 833
       - id: inline_table
         name: inline_table
         axisId: scheduled_job.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 756
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 838
       - id: json
         name: json
         axisId: scheduled_job.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 759
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 843
       - id: txt
         name: txt
         axisId: scheduled_job.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 762
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 848
       - id: wysiwyg_pdf
         name: wysiwyg_pdf
         axisId: scheduled_job.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 765
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 853
       - id: xlsx
         name: xlsx
         axisId: scheduled_job.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 768
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 741
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 858
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 821
     row: 9
     col: 12
     width: 12
@@ -873,17 +869,73 @@
     col: 0
     width: 24
     height: 2
+  - title: Activity By User Type
+    name: Activity By User Type
+    model: looker_ext
+    explore: user_daily_query_activity
+    type: looker_column
+    fields:
+    - user_daily_query_activity.user_type
+    - user_daily_query_activity.sum_approximate_usage_in_minutes
+    - user_daily_query_activity.created_week
+    pivots:
+    - user_daily_query_activity.user_type
+    fill_fields:
+    - user_daily_query_activity.user_type
+    - user_daily_query_activity.created_week
+    sorts:
+    - user_daily_query_activity.user_type
+    - user_daily_query_activity.created_week desc
+    limit: 500
+    query_timezone: America/Los_Angeles
+    stacking: normal
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_types: {}
+    row: 23
+    col: 0
+    width: 24
+    height: 7
   - name: Developer Trends
     type: text
     title_text: Developer Trends
-    row: 23
+    row: 30
     col: 0
     width: 24
     height: 3
   - name: Performance
     type: text
     title_text: Performance
-    row: 34
+    row: 41
     col: 0
     width: 24
     height: 3
@@ -962,10 +1014,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 71
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 59
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1008
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 996
     - label:
       maxValue:
       minValue:
@@ -981,10 +1033,10 @@
       - id: history.query_run_count
         name: Query Run Count
         axisId: history.query_run_count
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 86
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 74
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1027
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1015
     trend_lines: []
     reference_lines: []
     limit_displayed_rows_values:
@@ -1004,14 +1056,14 @@
         - "#F36254"
         - "#FCF758"
         - "#4FBC89"
-        __FILE: looker_extended/tsm_usage.dashboard.lookml
-        __LINE_NUM: 103
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1048
       bold: false
       italic: false
       strikethrough: false
       fields:
-      __FILE: looker_extended/tsm_usage.dashboard.lookml
-      __LINE_NUM: 98
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1043
     row: 17
     col: 0
     width: 12
@@ -1075,9 +1127,15 @@
       - id: scheduled_job.count_scheduled_jobs_completed
         name: Scheduled Job Count Scheduled Jobs Completed
         axisId: scheduled_job.count_scheduled_jobs_completed
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1121
       - id: scheduled_job.count_scheduled_jobs_failed
         name: Scheduled Job Count Scheduled Jobs Failed
         axisId: scheduled_job.count_scheduled_jobs_failed
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1124
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1109
     - label: Percent of Schedules Completed
       maxValue: 1
       minValue: 0
@@ -1093,12 +1151,16 @@
       - id: scheduled_job.percent_of_scheduled_jobs_completed
         name: Scheduled Job Percent of Scheduled Jobs Completed
         axisId: scheduled_job.percent_of_scheduled_jobs_completed
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1139
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1127
     column_spacing_ratio:
     column_group_spacing_ratio:
     colors:
     - 'palette: Mixed Neutrals'
     series_colors: {}
-    row: 37
+    row: 44
     col: 12
     width: 12
     height: 8
@@ -1157,6 +1219,10 @@
       - id: history.query_run_count
         name: History Query Run Count
         axisId: history.query_run_count
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1203
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1191
     - label: ''
       maxValue: 1
       minValue: 0
@@ -1172,11 +1238,15 @@
       - id: history.percent_queries_errored
         name: History Percent Queries Errored
         axisId: history.percent_queries_errored
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1218
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1206
     column_spacing_ratio:
     column_group_spacing_ratio:
     series_types:
       history.percent_queries_errored: line
-    row: 45
+    row: 52
     col: 0
     width: 12
     height: 6
@@ -1238,6 +1308,10 @@
       - id: history.query_run_count
         name: Query Run Count
         axisId: history.query_run_count
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1284
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1272
     - label:
       maxValue: 0.8
       minValue: 0
@@ -1253,6 +1327,10 @@
       - id: history.cache_ratio
         name: Cache Ratio
         axisId: history.cache_ratio
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1299
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1287
     series_types:
       history.cache_ratio: line
     focus_on_hover: true
@@ -1261,7 +1339,7 @@
       show_hide: hide
       first_last: first
       num_rows: 0
-    row: 45
+    row: 65
     col: 12
     width: 12
     height: 6
@@ -1301,7 +1379,7 @@
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
-    row: 54
+    row: 61
     col: 0
     width: 12
     height: 6
@@ -1377,7 +1455,7 @@
     hidden_fields:
     comparison_label: Created Dashboards
     single_value_title: Dashboards Deleted
-    row: 54
+    row: 61
     col: 12
     width: 5
     height: 4
@@ -1425,9 +1503,9 @@
     series_types: {}
     single_value_title: Looks Deleted
     comparison_label: Created Looks
-    row: 54
+    row: 61
     col: 17
-    width: 4
+    width: 5
     height: 4
   - title: Dashboard Tile Count
     name: Dashboard Tile Count
@@ -1488,10 +1566,10 @@
     hidden_fields:
     - dashboard_element.count
     - dashboard.count
-    row: 60
+    row: 67
     col: 0
     width: 12
-    height: 6
+    height: 7
   - title: Project Sizing
     name: Project Sizing
     model: looker_ext
@@ -1544,6 +1622,10 @@
       - id: project_status.average_number_of_explores
         name: Project Status Average Number of Explores
         axisId: project_status.average_number_of_explores
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1590
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1578
     - label:
       maxValue:
       minValue:
@@ -1559,7 +1641,11 @@
       - id: project_status.average_number_of_joins
         name: Project Status Average Number of Joins
         axisId: project_status.average_number_of_joins
-    row: 58
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1605
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1593
+    row: 71
     col: 12
     width: 12
     height: 8
@@ -1567,7 +1653,7 @@
     type: text
     title_text: Instance Management
     subtitle_text: Various Metrics on Components of Effective Instance Management
-    row: 51
+    row: 58
     col: 0
     width: 24
     height: 3
@@ -1634,6 +1720,10 @@
       - id: user.count
         name: User Count
         axisId: user.count
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1680
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1668
     - label: Query Run Count
       maxValue:
       minValue:
@@ -1649,6 +1739,10 @@
       - id: history.query_run_count
         name: History Query Run Count
         axisId: history.query_run_count
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1695
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1683
     colors:
     - 'palette: Mixed Neutrals'
     series_colors: {}
