@@ -154,48 +154,40 @@ view: user_daily_app_activity {
     type: number
     sql: ${TABLE}.user_id ;;
   }
-
   dimension: created_date {
     type: date
     sql: ${TABLE}.created_date ;;
   }
-
   dimension: look_creation_count {
     type: number
     hidden: yes
     sql: ${TABLE}.look_creation_count ;;
   }
-
   dimension: scheduled_plan_creation_count {
     type: number
     hidden: yes
     sql: ${TABLE}.scheduled_plan_creation_count ;;
   }
-
   dimension: data_action_execution {
     type: number
     hidden: yes
     sql: ${TABLE}.data_action_execution ;;
   }
-
   dimension: dashboard_modification_count {
     type: number
     hidden: yes
     sql: ${TABLE}.dashboard_modification_count ;;
   }
-
   dimension: favorite_content_count {
     type: number
     hidden: yes
     sql: ${TABLE}.favorite_content_count ;;
   }
-
   dimension: merge_query_count {
     type: number
     hidden: yes
     sql: ${TABLE}.merge_query_count ;;
   }
-
   dimension: export_query_count {
     type: number
     hidden: yes
@@ -207,12 +199,10 @@ view: user_daily_app_activity {
   }
   measure: sum_favorited_content {
     type: sum
-    hidden: yes
     sql: ${favorite_content_count};;
   }
   measure: sum_export_query {
     type: sum
-    hidden: yes
     sql: ${export_query_count};;
   }
 
