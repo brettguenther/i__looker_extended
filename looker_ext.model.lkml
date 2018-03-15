@@ -157,6 +157,7 @@ explore: user_daily_query_activity {
   hidden: yes
   join: user_daily_app_activity {
     relationship: one_to_many
+    view_label: "Daily User Activity"
     sql_on: ${user_daily_query_activity.created_date} = ${user_daily_app_activity.created_date} and ${user_daily_query_activity.user_id} = ${user_daily_app_activity.user_id};;
   }
 }

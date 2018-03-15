@@ -39,8 +39,10 @@ view: user_daily_query_activity {
     hidden: yes
     sql: CONCAT(${created_date},${user_id}) ;;
   }
-  dimension: created_date {
-    type: date
+  dimension_group: created {
+    type: time
+    timeframes: [date,week,month]
+    datatype: date
     sql: ${TABLE}.created_date ;;
   }
   dimension: query_run_count {
@@ -48,14 +50,45 @@ view: user_daily_query_activity {
     hidden: yes
     sql: ${TABLE}.query_run_count ;;
   }
+  dimension: dashboard_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.dashboard_query_count ;;
+  }
+  dimension: explore_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.explore_query_count ;;
+  }
+  dimension: sql_runner_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.sql_runner_query_count ;;
+  }
+  dimension: look_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.look_query_count ;;
+  }
+  dimension: drill_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.drill_query_count ;;
+  }
+  dimension: api_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.api_query_count ;;
+  }
+  dimension: pdf_render_query_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.pdf_render_query_count;;
+  }
   dimension: approximate_usage_in_minutes {
     type: number
     hidden: yes
     sql: ${TABLE}.approximate_usage_in_minutes ;;
-  }
-  measure: count {
-    type: count
-    drill_fields: [detail*]
   }
   measure: sum_query_run {
     type: sum
@@ -64,6 +97,32 @@ view: user_daily_query_activity {
   measure: sum_approximate_usage_in_minutes {
     type: sum
     sql: ${approximate_usage_in_minutes} ;;
+  }
+  measure: sum_dashboard_queries_run {
+    type: sum
+    sql: ${dashboard_query_count} ;;
+  }
+  dimension: user_type {
+    case: {
+      when: {
+        label: "Developer"
+        #might need to pull a developer event in here with an OR to confirm
+        sql: ${sql_runner_query_count} > 5 ;;
+      }
+      when: {
+        label: "Power User/Creator"
+        sql: ${user_daily_app_activity.dashboard_modification_count} > 0 or ${user_daily_app_activity.look_creation_count} > 0  ;;
+      }
+      when: {
+        label: "Explorer"
+        sql:  ${explore_query_count} > 0 and ${sql_runner_query_count} = 0 ;;
+      }
+      when: {
+        label: "Dashboard Consumer"
+        sql: ${explore_query_count} = 0 and ${sql_runner_query_count} = 0  ;;
+      }
+      else: "Other"
+    }
   }
   set: detail {
     fields: [user_id, created_date, query_run_count, approximate_usage_in_minutes]
@@ -103,45 +162,58 @@ view: user_daily_app_activity {
 
   dimension: look_creation_count {
     type: number
+    hidden: yes
     sql: ${TABLE}.look_creation_count ;;
   }
 
   dimension: scheduled_plan_creation_count {
     type: number
+    hidden: yes
     sql: ${TABLE}.scheduled_plan_creation_count ;;
   }
 
   dimension: data_action_execution {
     type: number
+    hidden: yes
     sql: ${TABLE}.data_action_execution ;;
   }
 
   dimension: dashboard_modification_count {
     type: number
+    hidden: yes
     sql: ${TABLE}.dashboard_modification_count ;;
   }
 
   dimension: favorite_content_count {
     type: number
+    hidden: yes
     sql: ${TABLE}.favorite_content_count ;;
   }
 
   dimension: merge_query_count {
     type: number
+    hidden: yes
     sql: ${TABLE}.merge_query_count ;;
   }
 
   dimension: export_query_count {
     type: number
+    hidden: yes
     sql: ${TABLE}.export_query_count ;;
-  }
-  measure: count {
-    type: count
-    drill_fields: [detail*]
   }
   measure: sum_merge_query {
     type: sum
     sql: ${merge_query_count} ;;
+  }
+  measure: sum_favorited_content {
+    type: sum
+    hidden: yes
+    sql: ${favorite_content_count};;
+  }
+  measure: sum_export_query {
+    type: sum
+    hidden: yes
+    sql: ${export_query_count};;
   }
 
   set: detail {
