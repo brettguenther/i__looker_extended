@@ -62,4 +62,8 @@ view: history_full {
     value_format_name: percent_0
     sql: ${count_queries_errored}/${query_run_count} ;;
   }
+  dimension: dashboard_run_session_id {
+    alias: [dashboard_session]
+    sql: ${TABLE}.dashboard_session ;;
+  }
 }
