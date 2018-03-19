@@ -1,4 +1,5 @@
 include: "/base_looker1/history.view"
+include: "user_extended.view"
 view: history_full {
   sql_table_name: history ;;
   extends: [history]
@@ -27,6 +28,10 @@ view: history_full {
     type: time
     datatype: datetime
     sql: ${TABLE}.completed_at ;;
+  }
+  dimension: months_since_user_created {
+    type: number
+    sql: TIMESTAMPDIFF(MONTH,${user.first_login_raw},${created_raw}) ;;
   }
 
   measure: count_query_run_cache {

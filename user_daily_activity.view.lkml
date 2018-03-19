@@ -106,8 +106,7 @@ view: user_daily_query_activity {
     case: {
       when: {
         label: "Developer"
-        #might need to pull a developer event in here with an OR to confirm
-        sql: ${sql_runner_query_count} > 5 ;;
+        sql: ${user_daily_app_activity.git_commit_count} > 5 ;;
       }
       when: {
         label: "Power User/Creator"
@@ -140,7 +139,8 @@ view: user_daily_app_activity {
           SUM(CASE WHEN name IN ('create_dashboard','create_dashboard_element','delete_dashboard_element','update_dashboard_element','update_dashboard_layout_component','create_dashboard_filter','update_dashboard_filter','delete_dashboard_filter','update_dashboard') THEN 1 ELSE 0 END) AS dashboard_modification_count,
           SUM(CASE WHEN name IN ('create_favorite_content') THEN 1 ELSE 0 END) AS favorite_content_count,
           SUM(CASE WHEN name IN ('create_merge_query') THEN 1 ELSE 0 END) AS merge_query_count,
-          SUM(CASE WHEN name IN ('export_query') THEN 1 ELSE 0 END) AS export_query_count
+          SUM(CASE WHEN name IN ('export_query') THEN 1 ELSE 0 END) AS export_query_count,
+          SUM(CASE WHEN name IN ('git_commit') THEN 1 ELSE 0 END) AS git_commit_count
           FROM event  AS event
           -- LEFT JOIN event_attribute on event.id = event_attribute.event_id
           GROUP BY 1,2 ;;
@@ -157,6 +157,11 @@ view: user_daily_app_activity {
   dimension: created_date {
     type: date
     sql: ${TABLE}.created_date ;;
+  }
+  dimension: git_commit_count {
+    type: number
+    hidden: yes
+    sql: ${TABLE}.git_commit_count ;;
   }
   dimension: look_creation_count {
     type: number
