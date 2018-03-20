@@ -412,9 +412,9 @@
       __LINE_NUM: 396
     listen:
       History Lookback: history.created_date
-    row: 44
+    row: 54
     col: 0
-    width: 12
+    width: 24
     height: 8
   - title: User Activity
     name: User Activity
@@ -568,7 +568,7 @@
       fields:
       __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
       __LINE_NUM: 555
-    row: 33
+    row: 43
     col: 0
     width: 6
     height: 8
@@ -684,7 +684,7 @@
         __LINE_NUM: 682
       __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
       __LINE_NUM: 670
-    row: 33
+    row: 43
     col: 12
     width: 12
     height: 8
@@ -701,7 +701,7 @@
       pdt_log.occur_date: 7 days
     sorts:
     - pdt_log.count desc
-    limit: 500
+    limit: 15
     query_timezone: America/Los_Angeles
     show_view_names: false
     show_row_numbers: true
@@ -755,7 +755,7 @@
       __LINE_NUM: 740
     series_labels:
       pdt_log.count: Build Complete Count
-    row: 33
+    row: 43
     col: 6
     width: 6
     height: 8
@@ -933,14 +933,14 @@
   - name: Developer Trends
     type: text
     title_text: Developer Trends
-    row: 30
+    row: 40
     col: 0
     width: 24
     height: 3
   - name: Performance
     type: text
     title_text: Performance
-    row: 41
+    row: 51
     col: 0
     width: 24
     height: 3
@@ -1165,7 +1165,7 @@
     colors:
     - 'palette: Mixed Neutrals'
     series_colors: {}
-    row: 44
+    row: 62
     col: 12
     width: 12
     height: 8
@@ -1241,7 +1241,7 @@
     hidden_fields:
     comparison_label: Created Dashboards
     single_value_title: Dashboards Deleted
-    row: 62
+    row: 73
     col: 12
     width: 5
     height: 4
@@ -1289,7 +1289,7 @@
     series_types: {}
     single_value_title: Looks Deleted
     comparison_label: Created Looks
-    row: 62
+    row: 73
     col: 17
     width: 5
     height: 4
@@ -1357,15 +1357,15 @@
     series_colors: {}
     x_axis_reversed: false
     y_axis_reversed: false
-    row: 62
+    row: 81
     col: 0
     width: 12
-    height: 7
+    height: 9
   - name: Instance Management
     type: text
     title_text: Instance Management
     subtitle_text: Various Metrics on Components of Effective Instance Management
-    row: 59
+    row: 70
     col: 0
     width: 24
     height: 3
@@ -1458,10 +1458,11 @@
     colors:
     - 'palette: Mixed Neutrals'
     series_colors: {}
-    row: 17
-    col: 12
-    width: 12
-    height: 6
+    x_axis_label: Dashboard ID - Look ID
+    row: 30
+    col: 0
+    width: 24
+    height: 10
   - title: Query Error Rate
     name: Query Error Rate
     model: looker_ext
@@ -1547,10 +1548,10 @@
     series_colors: {}
     x_axis_reversed: false
     y_axis_reversed: false
-    row: 52
+    row: 62
     col: 0
     width: 12
-    height: 7
+    height: 8
   - title: Cache Usage
     name: Cache Usage
     model: looker_ext
@@ -1645,10 +1646,10 @@
     series_colors: {}
     x_axis_reversed: false
     y_axis_reversed: false
-    row: 52
+    row: 77
     col: 12
     width: 12
-    height: 7
+    height: 8
   - title: Content Aging
     name: Content Aging
     model: looker_ext
@@ -1690,10 +1691,10 @@
     series_colors: {}
     x_axis_reversed: false
     y_axis_reversed: false
-    row: 69
+    row: 73
     col: 0
     width: 12
-    height: 6
+    height: 8
   - title: Project Sizing
     name: Project Sizing
     model: looker_ext
@@ -1775,10 +1776,91 @@
     colors:
     - 'palette: Mixed Neutrals'
     series_colors: {}
-    row: 66
+    row: 85
     col: 12
     width: 12
-    height: 9
+    height: 8
+  - title: User Fall Off
+    name: User Fall Off
+    model: looker_ext
+    explore: user_weekly_app_activity_period_over_period
+    type: looker_column
+    fields:
+    - user_weekly_app_activity_period_over_period.user_type
+    - user_weekly_app_activity_period_over_period.sum_user_count_fall_off
+    - user_weekly_app_activity_period_over_period.activity_week
+    pivots:
+    - user_weekly_app_activity_period_over_period.user_type
+    fill_fields:
+    - user_weekly_app_activity_period_over_period.user_type
+    sorts:
+    - user_weekly_app_activity_period_over_period.sum_user_count_fall_off desc 0
+    - user_weekly_app_activity_period_over_period.user_type
+    limit: 500
+    query_timezone: America/Los_Angeles
+    stacking: normal
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: editable
+    enable_conditional_formatting: false
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    series_types: {}
+    y_axes:
+    - label: User Falloff Count
+      maxValue:
+      minValue:
+      orientation: left
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat: '0'
+      series:
+      - id: Explorer
+        name: Explorer
+        axisId: user_weekly_app_activity_period_over_period.sum_user_count_fall_off
+      - id: Developer
+        name: Developer
+        axisId: user_weekly_app_activity_period_over_period.sum_user_count_fall_off
+      - id: Consumer
+        name: Consumer
+        axisId: user_weekly_app_activity_period_over_period.sum_user_count_fall_off
+    column_group_spacing_ratio:
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    row: 17
+    col: 12
+    width: 12
+    height: 6
   filters:
   - name: History Lookback
     title: History Lookback
