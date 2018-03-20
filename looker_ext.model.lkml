@@ -11,6 +11,10 @@ explore: content_view  {
   hidden: yes
 }
 
+explore: user_weekly_app_activity_period_over_period {
+  hidden: yes
+}
+
 explore: user_full {
   extends: [user]
   view_name: user

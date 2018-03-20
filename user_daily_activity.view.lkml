@@ -27,8 +27,8 @@ view: user_daily_query_activity {
         FROM history  AS history
         LEFT JOIN user ON history.USER_ID  = user.ID
         GROUP BY 1,2 ;;
-#     indexes: ["user_id","created_date"]
-#     sql_trigger_value: SELECT CURDATE() ;;
+    indexes: ["user_id","created_date"]
+    sql_trigger_value: SELECT CURDATE() ;;
   }
   dimension: user_id {
     type: number

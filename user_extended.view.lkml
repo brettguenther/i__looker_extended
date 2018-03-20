@@ -11,3 +11,7 @@ view: user_extended {
     sql: COALESCE(${credentials_email.created_raw},${credentials_ldap.created_raw},${credentials_google.created_raw},${credentials_saml.created_raw}) ;;
   }
  }
+
+view: user_facts {
+  #need a full history to build this out to get first month of activity info which means I can get user type(admin,dev,explorer,consumer)
+}

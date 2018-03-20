@@ -271,7 +271,7 @@
     name: Dialect and Connection Usage
     model: looker_ext
     explore: history_full
-    type: looker_column
+    type: looker_bar
     fields:
     - user.count
     - history.query_run_count
@@ -284,8 +284,7 @@
       history.source: "-Other"
     sorts:
     - history.query_run_count desc
-    limit: 500
-    query_timezone: America/Los_Angeles
+    limit: 10
     stacking: ''
     show_value_labels: false
     label_density: 25
@@ -303,11 +302,14 @@
     show_x_axis_ticks: true
     x_axis_scale: auto
     y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
     ordering: none
     show_null_labels: false
     show_totals_labels: false
     show_silhouette: false
     totals_color: "#808080"
+    query_timezone: America/Los_Angeles
     show_row_numbers: true
     truncate_column_names: true
     hide_totals: false
@@ -921,6 +923,9 @@
     conditional_formatting_include_totals: false
     conditional_formatting_include_nulls: false
     series_types: {}
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
     row: 23
     col: 0
     width: 24
@@ -1164,225 +1169,6 @@
     col: 12
     width: 12
     height: 8
-  - title: Query Error Rate
-    name: Query Error Rate
-    model: looker_ext
-    explore: history_full
-    type: looker_column
-    fields:
-    - history.query_run_count
-    - history.percent_queries_errored
-    - history.created_week
-    fill_fields:
-    - history.created_week
-    filters:
-      history.created_date: 8 weeks
-    sorts:
-    - history.created_week desc
-    limit: 500
-    query_timezone: America/Los_Angeles
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    y_axes:
-    - label: Query Run Count
-      maxValue:
-      minValue:
-      orientation: left
-      showLabels: true
-      showValues: true
-      tickDensity: default
-      tickDensityCustom: 5
-      type: linear
-      unpinAxis: false
-      valueFormat:
-      series:
-      - id: history.query_run_count
-        name: History Query Run Count
-        axisId: history.query_run_count
-        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-        __LINE_NUM: 1203
-      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-      __LINE_NUM: 1191
-    - label: ''
-      maxValue: 1
-      minValue: 0
-      orientation: right
-      showLabels: false
-      showValues: true
-      tickDensity: default
-      tickDensityCustom: 5
-      type: linear
-      unpinAxis: false
-      valueFormat: ''
-      series:
-      - id: history.percent_queries_errored
-        name: History Percent Queries Errored
-        axisId: history.percent_queries_errored
-        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-        __LINE_NUM: 1218
-      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-      __LINE_NUM: 1206
-    column_spacing_ratio:
-    column_group_spacing_ratio:
-    series_types:
-      history.percent_queries_errored: line
-    row: 52
-    col: 0
-    width: 12
-    height: 6
-  - title: Cache Usage
-    name: Cache Usage
-    model: looker_ext
-    explore: history_full
-    type: looker_column
-    fields:
-    - history.query_run_count
-    - history.created_week
-    - history.cache_ratio
-    fill_fields:
-    - history.created_week
-    filters:
-      history.created_date: 8 weeks
-    sorts:
-    - history.created_week
-    limit: 500
-    query_timezone: America/Los_Angeles
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: false
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: ordinal
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    show_null_points: true
-    point_style: circle_outline
-    interpolation: linear
-    y_axes:
-    - label: Query Run Count
-      maxValue:
-      minValue:
-      orientation: left
-      showLabels: true
-      showValues: true
-      tickDensity: default
-      tickDensityCustom: 5
-      type: linear
-      unpinAxis: false
-      valueFormat:
-      series:
-      - id: history.query_run_count
-        name: Query Run Count
-        axisId: history.query_run_count
-        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-        __LINE_NUM: 1284
-      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-      __LINE_NUM: 1272
-    - label:
-      maxValue: 0.8
-      minValue: 0
-      orientation: right
-      showLabels: false
-      showValues: true
-      tickDensity: default
-      tickDensityCustom: 5
-      type: linear
-      unpinAxis: false
-      valueFormat:
-      series:
-      - id: history.cache_ratio
-        name: Cache Ratio
-        axisId: history.cache_ratio
-        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-        __LINE_NUM: 1299
-      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-      __LINE_NUM: 1287
-    series_types:
-      history.cache_ratio: line
-    focus_on_hover: true
-    hide_legend: false
-    limit_displayed_rows_values:
-      show_hide: hide
-      first_last: first
-      num_rows: 0
-    row: 65
-    col: 12
-    width: 12
-    height: 6
-  - title: Content Aging
-    name: Content Aging
-    model: looker_ext
-    explore: content_usage
-    type: looker_column
-    fields:
-    - content_usage.content_count
-    - content_usage.days_since_last_access_tiers
-    fill_fields:
-    - content_usage.days_since_last_access_tiers
-    sorts:
-    - content_usage.days_since_last_access_tiers
-    limit: 500
-    query_timezone: America/Los_Angeles
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    row: 61
-    col: 0
-    width: 12
-    height: 6
   - title: Dashboards Deletion Activity
     name: Dashboards Deletion Activity
     model: looker_ext
@@ -1455,7 +1241,7 @@
     hidden_fields:
     comparison_label: Created Dashboards
     single_value_title: Dashboards Deleted
-    row: 61
+    row: 62
     col: 12
     width: 5
     height: 4
@@ -1503,7 +1289,7 @@
     series_types: {}
     single_value_title: Looks Deleted
     comparison_label: Created Looks
-    row: 61
+    row: 62
     col: 17
     width: 5
     height: 4
@@ -1566,94 +1352,20 @@
     hidden_fields:
     - dashboard_element.count
     - dashboard.count
-    row: 67
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    x_axis_reversed: false
+    y_axis_reversed: false
+    row: 62
     col: 0
     width: 12
     height: 7
-  - title: Project Sizing
-    name: Project Sizing
-    model: looker_ext
-    explore: project_status
-    type: looker_column
-    fields:
-    - project_status.project
-    - project_status.average_number_of_explores
-    - project_status.average_number_of_joins
-    sorts:
-    - project_status.average_number_of_explores desc
-    limit: 20
-    query_timezone: America/Los_Angeles
-    stacking: ''
-    show_value_labels: false
-    label_density: 25
-    legend_position: center
-    x_axis_gridlines: false
-    y_axis_gridlines: true
-    show_view_names: true
-    limit_displayed_rows: false
-    y_axis_combined: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    y_axis_tick_density: default
-    y_axis_tick_density_custom: 5
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    y_axis_scale_mode: linear
-    ordering: none
-    show_null_labels: false
-    show_totals_labels: false
-    show_silhouette: false
-    totals_color: "#808080"
-    series_types: {}
-    y_axes:
-    - label: ''
-      maxValue:
-      minValue:
-      orientation: left
-      showLabels: true
-      showValues: true
-      tickDensity: default
-      tickDensityCustom: 5
-      type: linear
-      unpinAxis: false
-      valueFormat:
-      series:
-      - id: project_status.average_number_of_explores
-        name: Project Status Average Number of Explores
-        axisId: project_status.average_number_of_explores
-        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-        __LINE_NUM: 1590
-      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-      __LINE_NUM: 1578
-    - label:
-      maxValue:
-      minValue:
-      orientation: right
-      showLabels: true
-      showValues: true
-      tickDensity: default
-      tickDensityCustom: 5
-      type: linear
-      unpinAxis: false
-      valueFormat:
-      series:
-      - id: project_status.average_number_of_joins
-        name: Project Status Average Number of Joins
-        axisId: project_status.average_number_of_joins
-        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-        __LINE_NUM: 1605
-      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
-      __LINE_NUM: 1593
-    row: 71
-    col: 12
-    width: 12
-    height: 8
   - name: Instance Management
     type: text
     title_text: Instance Management
     subtitle_text: Various Metrics on Components of Effective Instance Management
-    row: 58
+    row: 59
     col: 0
     width: 24
     height: 3
@@ -1750,6 +1462,323 @@
     col: 12
     width: 12
     height: 6
+  - title: Query Error Rate
+    name: Query Error Rate
+    model: looker_ext
+    explore: history_full
+    type: looker_column
+    fields:
+    - history.query_run_count
+    - history.percent_queries_errored
+    - history.created_week
+    fill_fields:
+    - history.created_week
+    filters:
+      history.created_date: 8 weeks
+    sorts:
+    - history.created_week desc
+    limit: 500
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    y_axes:
+    - label: Query Run Count
+      maxValue:
+      minValue:
+      orientation: left
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: history.query_run_count
+        name: History Query Run Count
+        axisId: history.query_run_count
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1203
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1191
+    - label: ''
+      maxValue: 1
+      minValue: 0
+      orientation: right
+      showLabels: false
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat: ''
+      series:
+      - id: history.percent_queries_errored
+        name: History Percent Queries Errored
+        axisId: history.percent_queries_errored
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1218
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1206
+    series_types:
+      history.percent_queries_errored: line
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    x_axis_reversed: false
+    y_axis_reversed: false
+    row: 52
+    col: 0
+    width: 12
+    height: 7
+  - title: Cache Usage
+    name: Cache Usage
+    model: looker_ext
+    explore: history_full
+    type: looker_column
+    fields:
+    - history.query_run_count
+    - history.created_week
+    - history.cache_ratio
+    fill_fields:
+    - history.created_week
+    filters:
+      history.created_date: 8 weeks
+    sorts:
+    - history.created_week
+    limit: 500
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: false
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: ordinal
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_null_points: true
+    point_style: circle_outline
+    interpolation: linear
+    y_axes:
+    - label: Query Run Count
+      maxValue:
+      minValue:
+      orientation: left
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: history.query_run_count
+        name: Query Run Count
+        axisId: history.query_run_count
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1284
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1272
+    - label:
+      maxValue: 0.8
+      minValue: 0
+      orientation: right
+      showLabels: false
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: history.cache_ratio
+        name: Cache Ratio
+        axisId: history.cache_ratio
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1299
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1287
+    series_types:
+      history.cache_ratio: line
+    focus_on_hover: true
+    hide_legend: false
+    limit_displayed_rows_values:
+      show_hide: hide
+      first_last: first
+      num_rows: 0
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    x_axis_reversed: false
+    y_axis_reversed: false
+    row: 52
+    col: 12
+    width: 12
+    height: 7
+  - title: Content Aging
+    name: Content Aging
+    model: looker_ext
+    explore: content_usage
+    type: looker_column
+    fields:
+    - content_usage.content_count
+    - content_usage.days_since_last_access_tiers
+    fill_fields:
+    - content_usage.days_since_last_access_tiers
+    sorts:
+    - content_usage.days_since_last_access_tiers
+    limit: 500
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    x_axis_reversed: false
+    y_axis_reversed: false
+    row: 69
+    col: 0
+    width: 12
+    height: 6
+  - title: Project Sizing
+    name: Project Sizing
+    model: looker_ext
+    explore: project_status
+    type: looker_bar
+    fields:
+    - project_status.project
+    - project_status.average_number_of_explores
+    - project_status.average_number_of_joins
+    sorts:
+    - project_status.average_number_of_explores desc
+    limit: 10
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    x_axis_reversed: false
+    y_axis_reversed: false
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    query_timezone: America/Los_Angeles
+    series_types: {}
+    y_axes:
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: top
+      showLabels: false
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: project_status.average_number_of_joins
+        name: Project Status Average Number of Joins
+        axisId: project_status.average_number_of_joins
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1590
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1578
+    - label: ''
+      maxValue:
+      minValue:
+      orientation: bottom
+      showLabels: true
+      showValues: true
+      tickDensity: default
+      tickDensityCustom: 5
+      type: linear
+      unpinAxis: false
+      valueFormat:
+      series:
+      - id: project_status.average_number_of_explores
+        name: Project Status Average Number of Explores
+        axisId: project_status.average_number_of_explores
+        __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+        __LINE_NUM: 1605
+      __FILE: looker_extended/6_usage_and_stats_reporting.dashboard.lookml
+      __LINE_NUM: 1593
+    x_axis_label: Project
+    colors:
+    - 'palette: Mixed Neutrals'
+    series_colors: {}
+    row: 66
+    col: 12
+    width: 12
+    height: 9
   filters:
   - name: History Lookback
     title: History Lookback
