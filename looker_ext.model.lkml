@@ -15,6 +15,14 @@ explore: user_weekly_app_activity_period_over_period {
   hidden: yes
 }
 
+explore: pdt_state {}
+
+explore: field_usage_full {
+  extends: [field_usage]
+  from: field_usage
+  view_name: field_usage
+}
+
 explore: user_full {
   extends: [user]
   view_name: user

@@ -11,4 +11,9 @@ measure: count_events_filtered {
   type: sum
   sql: CASE WHEN {% condition event_type %} ${name} {% endcondition %} THEN 1 ELSE 0 END;;
 }
+measure: min_time {
+  type: min
+  sql: ${created_raw} ;;
+}
+
 }
